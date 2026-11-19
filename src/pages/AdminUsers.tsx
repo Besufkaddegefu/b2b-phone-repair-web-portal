@@ -5,7 +5,7 @@ import { api } from '@/lib/api'
 import { AdminLayout } from '@/components/AdminLayout'
 import { Card, CardHeader, CardTitle, CardContent, Button, Input, Badge, Select } from '@/components/ui'
 import { formatDate, formatRelativeTime, getStatusColor, getRoleColor, cn } from '@/lib/utils'
-import type { UserWithSubscription } from '@/types'
+import type { UserWithSubscription, UserRole } from '@/types'
 
 export function AdminUsers() {
   useAuthSync()
@@ -14,7 +14,7 @@ export function AdminUsers() {
   const [isLoading, setIsLoading] = useState(true)
   const [pagination, setPagination] = useState({ page: 1, pageSize: 20, total: 0, totalPages: 0 })
   const [search, setSearch] = useState('')
-  const [roleFilter, setRoleFilter] = useState('')
+  const [roleFilter, setRoleFilter] = useState<UserRole | ''>('')
   const [statusFilter, setStatusFilter] = useState('')
   const [selectedUser, setSelectedUser] = useState<UserWithSubscription | null>(null)
   const [showRoleModal, setShowRoleModal] = useState(false)
@@ -97,7 +97,7 @@ export function AdminUsers() {
                 { value: 'moderator', label: 'Moderator' },
               ]}
               value={roleFilter}
-              onChange={(e) => setRoleFilter(e.target.value)}
+              onChange={(e) => setRoleFilter(e.target.value as UserRole | '')}
               placeholder="Filter by role"
               className="w-48"
             />
