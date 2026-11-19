@@ -103,6 +103,11 @@ export function AdminAnalytics() {
     )
   }
 
+  const revenueData = analytics?.revenue ?? []
+  const usersData = analytics?.users ?? []
+  const listingsData = analytics?.listings ?? []
+  const subscriptionsData = analytics?.subscriptions ?? []
+
   return (
     <AdminLayout>
       <div className="space-y-6">
@@ -187,9 +192,9 @@ export function AdminAnalytics() {
             </CardHeader>
             <CardContent>
               <div className="h-64">
-                {analytics?.revenue.length > 0 ? (
+                {revenueData.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={analytics.revenue}>
+                    <LineChart data={revenueData}>
                       <CartesianGrid strokeDasharray="3 3" className="stroke-gray-200" />
                       <XAxis
                         dataKey="date"
@@ -237,9 +242,9 @@ export function AdminAnalytics() {
             </CardHeader>
             <CardContent>
               <div className="h-64">
-                {analytics?.users.length > 0 ? (
+                {usersData.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={analytics.users}>
+                    <BarChart data={usersData}>
                       <CartesianGrid strokeDasharray="3 3" className="stroke-gray-200" />
                       <XAxis
                         dataKey="date"
@@ -268,9 +273,9 @@ export function AdminAnalytics() {
             </CardHeader>
             <CardContent>
               <div className="h-64">
-                {analytics?.listings.length > 0 ? (
+                {listingsData.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={analytics.listings}>
+                    <BarChart data={listingsData}>
                       <CartesianGrid strokeDasharray="3 3" className="stroke-gray-200" />
                       <XAxis
                         dataKey="date"
@@ -299,11 +304,11 @@ export function AdminAnalytics() {
             </CardHeader>
             <CardContent>
               <div className="h-64">
-                {analytics?.subscriptions.length > 0 ? (
+                {subscriptionsData.length > 0 ? (
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
-                        data={analytics.subscriptions}
+                        data={subscriptionsData}
                         cx="50%"
                         cy="50%"
                         innerRadius={60}
@@ -314,7 +319,7 @@ export function AdminAnalytics() {
                         label={({ status, percent }) => `${status.replace('_', ' ')} ${(percent * 100).toFixed(0)}%`}
                         labelLine={false}
                       >
-                        {analytics.subscriptions.map((_, index) => (
+                        {subscriptionsData.map((_, index) => (
                           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
                       </Pie>

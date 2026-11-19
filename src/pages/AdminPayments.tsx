@@ -5,7 +5,7 @@ import { api } from '@/lib/api'
 import { AdminLayout } from '@/components/AdminLayout'
 import { Card, CardHeader, CardTitle, CardContent, Button, Input, Badge, Select } from '@/components/ui'
 import { formatPrice, formatDate, formatRelativeTime, getStatusColor, cn } from '@/lib/utils'
-import type { Transaction } from '@/types'
+import type { Transaction, TransactionStatus } from '@/types'
 
 export function AdminPayments() {
   useAuthSync()
@@ -24,7 +24,7 @@ export function AdminPayments() {
       const response = await api.getTransactions({
         page,
         page_size: 20,
-        status: statusFilter || undefined,
+        status: (statusFilter || undefined) as TransactionStatus | undefined,
       })
       setTransactions(response.items)
       setPagination({

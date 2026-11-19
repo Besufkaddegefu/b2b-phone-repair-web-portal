@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useAuth } from '@clerk/clerk-react'
+import { useAuth, useUser } from '@clerk/clerk-react'
 import {
   LayoutDashboard,
   Users,
@@ -31,7 +31,7 @@ const navigation = [
 export function AdminSidebar() {
   const { sidebarOpen, setSidebarOpen } = useStore()
   const location = useLocation()
-  const { user } = useAuth()
+  const { user } = useUser()
 
   return (
     <>
@@ -121,7 +121,8 @@ export function AdminSidebar() {
 }
 
 export function AdminHeader({ onMenuClick }: { onMenuClick: () => void }) {
-  const { user, signOut } = useAuth()
+  const { signOut } = useAuth()
+  const { user } = useUser()
 
   return (
     <header className="sticky top-0 z-30 bg-white border-b border-gray-200">

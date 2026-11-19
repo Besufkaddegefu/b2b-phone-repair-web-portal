@@ -4,7 +4,7 @@ import { Search, Filter, Plus, Grid, List, ChevronLeft, ChevronRight, Tag, MapPi
 import { useAuthSync, useListings, useCategories } from '@/hooks'
 import { api } from '@/lib/api'
 import { Card, Button, Input, Select, Badge } from '@/components/ui'
-import { ListingCard } from './components/ListingCard'
+import { ListingCard } from '@/components/ListingCard'
 import { formatPrice, getConditionLabel, getConditionColor, cn } from '@/lib/utils'
 import type { PartListing } from '@/types'
 
@@ -197,7 +197,8 @@ export function TechnicianPortal() {
               )}
             </>
           )}
-        </main>
+        </div>
+      </main>
 
         {/* Create/Edit Modal */}
         {(showCreateModal || editingListing) && (

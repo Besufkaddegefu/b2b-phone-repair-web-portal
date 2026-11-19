@@ -260,10 +260,10 @@ export function AdminBulkUpload() {
                 <tbody className="divide-y divide-gray-200">
                   {previewData.slice(0, 20).map((row, rowIndex) => (
                     <tr key={rowIndex} className="hover:bg-gray-50">
-                      <td className="px-4 py-2 text-gray-900">{row.category || ''}</td>
-                      <td className="px-4 py-2 text-gray-900">{row.brand || ''}</td>
-                      <td className="px-4 py-2 text-gray-900">{row.model_name || ''}</td>
-                      <td className="px-4 py-2 text-gray-900">{row.part_name || ''}</td>
+                      <td className="px-4 py-2 text-gray-900">{String(row.category ?? '')}</td>
+                      <td className="px-4 py-2 text-gray-900">{String(row.brand ?? '')}</td>
+                      <td className="px-4 py-2 text-gray-900">{String(row.model_name ?? '')}</td>
+                      <td className="px-4 py-2 text-gray-900">{String(row.part_name ?? '')}</td>
                       <td className="px-4 py-2">
                         {row.condition ? (
                           <Badge variant="default">{getConditionLabel(String(row.condition))}</Badge>
@@ -271,8 +271,8 @@ export function AdminBulkUpload() {
                       </td>
                       <td className="px-4 py-2 text-gray-900">{row.price ? formatPrice(Number(row.price)) : ''}</td>
                       <td className="px-4 py-2 text-gray-900">{row.is_negotiable ? 'Yes' : 'No'}</td>
-                      <td className="px-4 py-2 text-gray-900 max-w-xs truncate">{row.description || ''}</td>
-                      <td className="px-4 py-2 text-gray-900 text-xs">{row.image_urls || ''}</td>
+                      <td className="px-4 py-2 text-gray-900 max-w-xs truncate">{String(row.description ?? '')}</td>
+                      <td className="px-4 py-2 text-gray-900 text-xs">{String(row.image_urls ?? '')}</td>
                     </tr>
                   ))}
                   {previewData.length > 20 && (

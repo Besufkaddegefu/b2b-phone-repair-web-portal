@@ -4,8 +4,9 @@ import { useStore } from '@/store'
 import { api } from '@/lib/api'
 
 export function useAuthSync() {
-  const { user: clerkUser, isLoaded, isSignedIn, getToken } = useAuth()
-  const { setUser, logout, isAuthenticated } = useStore()
+  const { isLoaded, isSignedIn, getToken } = useAuth()
+  const { user: clerkUser } = useUser()
+  const { user, setUser, logout, isAuthenticated, isAdmin } = useStore()
 
   const syncUser = useCallback(async () => {
     if (!isLoaded) return
@@ -33,7 +34,7 @@ export function useAuthSync() {
     syncUser()
   }, [syncUser])
 
-  return { isLoaded, isSignedIn }
+  return { isLoaded, isSignedIn, isAdmin, user }
 }
 
 export function useListings() {

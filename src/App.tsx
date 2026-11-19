@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
-import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn, useAuth } from '@clerk/clerk-react'
+import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react'
 import { useAuthSync } from '@/hooks'
 import { AdminLayout } from '@/components/AdminLayout'
 import { AdminDashboard } from '@/pages/AdminDashboard'
@@ -13,7 +13,6 @@ import { AdminSettings } from '@/pages/AdminSettings'
 const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 function AdminRoute({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth()
   const { isAdmin } = useAuthSync()
 
   if (!isAdmin) {
