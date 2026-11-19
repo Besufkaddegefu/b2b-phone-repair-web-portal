@@ -24,8 +24,7 @@ export function AdminSettings() {
   }
 
   return (
-    <AdminLayout>
-      <div className="max-w-3xl">
+    <div className="max-w-3xl">
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
@@ -175,6 +174,5 @@ export function AdminSettings() {
           </div>
         </Card>
       </div>
-    </AdminLayout>
   )
 }
