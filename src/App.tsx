@@ -70,9 +70,5 @@ function AppRoutes() {
 }
 
 export function App() {
-  return (
-    <ClerkProvider publishableKey={publishableKey}>
-      <AppRoutes />
-    </ClerkProvider>
-  )
+  return <AppRoutes />
 }
