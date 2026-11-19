@@ -24,9 +24,10 @@ function AdminRoute({ children }: { children: React.ReactNode }) {
 
 function TechnicianRoute({ children }: { children: React.ReactNode }) {
   return (
-    <SignedIn>
-      {children}
-    </SignedIn>
+    <>
+      <SignedIn>{children}</SignedIn>
+      <SignedOut><RedirectToSignIn /></SignedOut>
+    </>
   )
 }
 
