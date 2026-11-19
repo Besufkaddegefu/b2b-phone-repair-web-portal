@@ -218,12 +218,14 @@ export function TechnicianPortal() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Select
                     label="Category"
+                    name="category_id"
                     options={categories.map(c => ({ value: String(c.id), label: c.name }))}
                     placeholder="Select category"
                     required
                   />
                   <Select
                     label="Brand"
+                    name="brand"
                     options={[
                       { value: 'Samsung', label: 'Samsung' },
                       { value: 'Apple', label: 'Apple' },
@@ -237,12 +239,13 @@ export function TechnicianPortal() {
                   />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Input label="Model Name" placeholder="e.g., Galaxy S22 Ultra" required />
-                  <Input label="Part Name" placeholder="e.g., Original OLED Screen" required />
+<Input label="Model Name" name="model_name" placeholder="e.g., Galaxy S22 Ultra" required />
+                   <Input label="Part Name" name="part_name" placeholder="e.g., Original OLED Screen" required />
                 </div>
-                <Select
-                  label="Condition"
-                  options={[
+<Select
+                    label="Condition"
+                    name="condition"
+                    options={[
                     { value: 'original_pulled', label: 'Original (Pulled)' },
                     { value: 'oem_new', label: 'OEM New' },
                     { value: 'aftermarket', label: 'Aftermarket' },
@@ -252,7 +255,7 @@ export function TechnicianPortal() {
                   required
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Input label="Price (ETB)" type="number" placeholder="15000" required />
+                  <Input label="Price (ETB)" name="price" type="number" placeholder="15000" required />
                   <div className="flex items-end">
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input type="checkbox" name="is_negotiable" defaultChecked className="rounded border-gray-300" />

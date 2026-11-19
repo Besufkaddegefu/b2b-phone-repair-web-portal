@@ -62,7 +62,8 @@ function AppRoutes() {
         <Route path="/portal/settings" element={<TechnicianPortal />} />
       </Route>
 
-      {/* Root redirect */}
+      {/* Settings */}
+<Route path="/settings" element={<SignedIn><AdminSettings /></SignedIn>} />
       <Route path="/" element={<Navigate to="/portal" replace />} />
       <Route path="*" element={<Navigate to="/portal" replace />} />
     </Routes>
